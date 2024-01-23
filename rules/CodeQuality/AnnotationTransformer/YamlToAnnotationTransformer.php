@@ -46,11 +46,11 @@ final class YamlToAnnotationTransformer
     }
     public function transform(Class_ $class, EntityMapping $entityMapping) : void
     {
-        if (isset($this->transformed[$class->name->name])) {
+        if (isset($this->transformed[$class->namespacedName->toString()])) {
             return;
         }
 
-        $this->transformed[$class->name->name] = true;
+        $this->transformed[$class->namespacedName->toString()] = true;
 
         $this->transformClass($class, $entityMapping);
         $this->transformProperties($class, $entityMapping);
